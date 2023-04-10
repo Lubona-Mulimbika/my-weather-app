@@ -1,0 +1,101 @@
+body {
+  font-size: x-large;
+  font-weight: 700;
+  font-family: "Caveat", cursive;
+}
+form {
+  justify-content: center;
+  display: flex;
+}
+p {
+  text-align: center;
+  margin: 20px;
+  font-size: x-large;
+}
+
+.Daydetail,
+p {
+  text-align: center;
+}
+.changeTempUnit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.switchUnit {
+  border-radius: 10px;
+
+  background-color: lavenderblush;
+  cursor: pointer;
+  appearance: none;
+  font-weight: 700;
+  line-height: 0.5;
+  outline: 0px;
+  font-size: 10px;
+  height: 30px;
+  width: auto;
+  max-width: none;
+  border: 2px solid rgb(235, 132, 166);
+  padding: 0px 5px;
+  min-width: 0px;
+}
+.switchUnit:hover {
+  background-color: rgb(235, 132, 166);
+  color: whitesmoke;
+}
+
+.currentLocation {
+  font-size: 20px;
+}
+.currentTemp {
+  font-size: 35px;
+  line-height: 2;
+}
+
+.currentWeather-emoji {
+  font-size: 150px;
+}
+.card {
+  padding: 1.2rem 0 1rem 0;
+  margin: 1rem;
+  border-radius: 1.5rem;
+  border-color: rgba(238, 237, 237, 0.438);
+  box-shadow: 5px 8px 10px #80808033;
+  background-color: rgb(175, 175, 235) !important;
+}
+.row {
+  margin: 9.5px;
+  justify-content: center;
+  align-items: center;
+}
+.daytimeWeather {
+  margin-top: 40px;
+}
+
+.row1,
+.row2,
+.row3 {
+  justify-content: center;
+  display: flex;
+  border: 1px #f368bc dotted;
+  border-radius: 10px;
+  box-shadow: 5px 8px 10px #80808033;
+}
+.row2 {
+  font-size: 60px;
+}
+
+.day {
+  flex: 1;
+}
+.extraInfo {
+  font-size: 16px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin: 0px 30px 30px 30px;
+  border: 1px #f368bc dotted;
+  border-radius: 10px;
+  box-shadow: 5px 8px 10px #80808033;
+  padding: 10px;
+}
