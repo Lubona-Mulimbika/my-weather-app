@@ -26,10 +26,9 @@ let dateNow = new Date();
 const dayNow = dateNow.getDay();
 const monthNow = dateNow.getMonth();
 const day = dateNow.getDate();
-let hours = dateNow.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
+
+const hours = dateNow.getHours() < 10 ? `0${hours}` : dateNow.getHours();
+
 const minutes =
   dateNow.getMinutes() < 10 ? `0${dateNow.getMinutes()}` : dateNow.getMinutes();
 const time = `${hours}:${minutes}`;
