@@ -47,6 +47,8 @@ function displayWeatherData(response) {
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let weatherCondition = response.data.weather[0].description;
+  weatherCondition =
+    weatherCondition.charAt(0).toUpperCase() + weatherCondition.slice(1);
   currentLocation.innerHTML = city;
   currentTemp.innerHTML = `${temperature}&deg;C`;
   weatherDetail.innerHTML = weatherCondition;
