@@ -45,11 +45,14 @@ p {
 }
 
 .currentLocation {
-  font-size: 20px;
+  font-size: 30px;
 }
-.currentTemp {
-  font-size: 35px;
+.current-temp {
+  font-size: 40px;
   line-height: 2;
+}
+.weatherDetail {
+  font-size: 18px;
 }
 
 .currentWeather-emoji {
@@ -89,7 +92,7 @@ p {
   flex: 1;
 }
 .extraInfo {
-  font-size: 16px;
+  font-size: 15px;
   position: absolute;
   top: 5px;
   right: 5px;

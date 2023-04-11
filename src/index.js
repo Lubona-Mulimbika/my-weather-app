@@ -26,28 +26,30 @@ let dateNow = new Date();
 const dayNow = dateNow.getDay();
 const monthNow = dateNow.getMonth();
 const day = dateNow.getDate();
-
-const hours = dateNow.getHours() < 10 ? `0${hours}` : dateNow.getHours();
-
+let hours = dateNow.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
 const minutes =
   dateNow.getMinutes() < 10 ? `0${dateNow.getMinutes()}` : dateNow.getMinutes();
 const time = `${hours}:${minutes}`;
 
-currentDateDisplayed.innerHTML = `${daysOfWeek[dayNow]}, ${
-  monthsOfYear[monthNow]
-} ${day}, ${dateNow.getFullYear()} <br> ${time}`;
+currentDateDisplayed.innerHTML = `${daysOfWeek[dayNow]}, ${monthsOfYear[monthNow]} ${day} <br> ${time}`;
 
 let currentLocation = document.querySelector("#currentLocation");
 let enterLocation = document.querySelector("#enterLocation");
 let searchForm = document.querySelector("#search-city");
 let currentTemp = document.querySelector(".current-temp");
+let weatherDetail = document.querySelector(".weatherDetail");
 let apiKey = "c6f8ef4575250284954db9f4dfa7a996";
 
 function displayWeatherData(response) {
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
+  let weatherCondition = response.data.weather[0].description;
   currentLocation.innerHTML = city;
   currentTemp.innerHTML = `${temperature}&deg;C`;
+  weatherDetail.innerHTML = weatherCondition;
 }
 
 function updateWeatherDetails(event) {
