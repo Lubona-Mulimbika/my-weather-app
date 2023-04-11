@@ -104,3 +104,7 @@ p {
   box-shadow: 5px 8px 10px #80808033;
   padding: 10px;
 }
+.signature,
+.git-link {
+  font-size: 15px;
+}
