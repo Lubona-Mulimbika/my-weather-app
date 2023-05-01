@@ -58,6 +58,9 @@ p {
   font-size: 18px;
 }
 
+#icon-today {
+  font-size: 150Opx;
+}
 .currentWeather-emoji {
   font-size: 150px;
 }

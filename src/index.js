@@ -52,6 +52,27 @@ function displayWeatherData(response) {
   currentLocation.innerHTML = city;
   currentTemp.innerHTML = `${temperature}&deg;C`;
   weatherDetail.innerHTML = weatherCondition;
+
+  let switchCelcius = document.querySelector("#switch-celcius");
+  let switchFarenheit = document.querySelector("#switch-farenheit");
+
+  function switchToCelcius() {
+    currentTemp.innerHTML = `${temperature}&deg;C`;
+  }
+  function switchToFarenheit() {
+    let farenheitTemp = Math.round(temperature * 1.8 + 32);
+    currentTemp.innerHTML = `${farenheitTemp}&deg;F`;
+  }
+
+  switchCelcius.addEventListener("click", switchToCelcius);
+  switchFarenheit.addEventListener("click", switchToFarenheit);
+
+  let iconToday = document.querySelector("#icon-today");
+  let iconData = response.data.weather[0].icon;
+  iconToday.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconData}.png`
+  );
 }
 
 function updateWeatherDetails(event) {
@@ -88,3 +109,4 @@ function setCurrentLocation() {
 }
 
 currentLocationBtn.addEventListener("click", setCurrentLocation);
+setCurrentLocation();
