@@ -40,6 +40,8 @@ let currentLocation = document.querySelector("#currentLocation");
 let enterLocation = document.querySelector("#enterLocation");
 let searchForm = document.querySelector("#search-city");
 let currentTemp = document.querySelector(".current-temp");
+let humidityValue = document.querySelector(".humidity-value");
+let windspeedValue = document.querySelector(".windspeed-value");
 let weatherDetail = document.querySelector(".weatherDetail");
 let apiKey = "c6f8ef4575250284954db9f4dfa7a996";
 
@@ -73,6 +75,9 @@ function displayWeatherData(response) {
     "src",
     `https://openweathermap.org/img/wn/${iconData}.png`
   );
+
+  humidityValue.innerHTML = ` ${Math.round(response.data.main.humidity)}%`;
+  windspeedValue.innerHTML = ` ${Math.round(response.data.wind.speed)}m/s`;
 }
 
 function updateWeatherDetails(event) {
