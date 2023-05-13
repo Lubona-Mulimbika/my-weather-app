@@ -98,15 +98,17 @@ p {
   flex: 1;
 }
 .extraInfo {
-  font-size: 15px;
-  position: absolute;
+  align-items: start;
+  font-size: 12px;
+
   top: 5px;
   right: 5px;
   margin: 0px 30px 30px 30px;
   border: 1px #f368bc dotted;
   border-radius: 10px;
   box-shadow: 5px 8px 10px #80808033;
-  padding: 10px;
+  margin-bottom: 20px;
+  padding: 0px 10px 10px 10px;
 }
 .signature,
 .git-link {

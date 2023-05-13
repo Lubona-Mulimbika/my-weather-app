@@ -115,3 +115,21 @@ function setCurrentLocation() {
 
 currentLocationBtn.addEventListener("click", setCurrentLocation);
 setCurrentLocation();
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-element");
+  let forecastHtml = "";
+  let forecastDays = ["Wed", "Thu", "Fri", "Sat"];
+
+  forecastDays.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="day" class="col">
+      <div class="row row1">${day}</div>
+      <div class="row row2">☁️</div>
+      <div class="row row3">18&deg; | 21&deg;</div></div>`;
+
+    forecastElement.innerHTML = forecastHtml;
+  });
+}
+displayForecast();
