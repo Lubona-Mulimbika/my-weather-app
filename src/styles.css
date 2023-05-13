@@ -91,7 +91,10 @@ p {
   box-shadow: 5px 8px 10px #80808033;
 }
 .row2 {
-  font-size: 60px;
+  font-size: 70px;
+}
+.row3 {
+  font-size: 12px;
 }
 
 .day {

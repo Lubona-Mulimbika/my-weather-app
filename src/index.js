@@ -36,6 +36,44 @@ const time = `${hours}:${minutes}`;
 
 currentDateDisplayed.innerHTML = `${daysOfWeek[dayNow]}, ${monthsOfYear[monthNow]} ${day} <br> ${time}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function getDailyForecast(coordinates) {
+  let apiKey = "cb4f81d02c3cd5910432ff00a734c2da";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  const forecastElement = document.querySelector("#forecast-element");
+  let forecastHTML = "";
+  forecast.slice(1, 7).forEach(function (forecastDay) {
+    let day = formatDay(forecastDay.dt);
+    forecastHTML += `<div class="day" class="col">
+        <div class="row row1">${day}</div>
+        <div class="row row2">
+          <img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" alt="" width="10" />
+        </div>
+        <div class="row row3">
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° | ${Math.round(forecastDay.temp.min)}° </span>
+        </div>
+      </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let currentLocation = document.querySelector("#currentLocation");
 let enterLocation = document.querySelector("#enterLocation");
 let searchForm = document.querySelector("#search-city");
@@ -43,7 +81,7 @@ let currentTemp = document.querySelector(".current-temp");
 let humidityValue = document.querySelector(".humidity-value");
 let windspeedValue = document.querySelector(".windspeed-value");
 let weatherDetail = document.querySelector(".weatherDetail");
-let apiKey = "c6f8ef4575250284954db9f4dfa7a996";
+let apiKey = "2478588a2a025d55c9dbe6c95d5058e9";
 
 function displayWeatherData(response) {
   let city = response.data.name;
@@ -78,6 +116,8 @@ function displayWeatherData(response) {
 
   humidityValue.innerHTML = ` ${Math.round(response.data.main.humidity)}%`;
   windspeedValue.innerHTML = ` ${Math.round(response.data.wind.speed)}m/s`;
+
+  getDailyForecast(response.data.coord);
 }
 
 function updateWeatherDetails(event) {
@@ -91,12 +131,15 @@ function updateWeatherDetails(event) {
       .catch(() => {
         alert("City not found");
       });
-  } // else {alert("Enter a city name");
+  }
 }
 
 searchForm.addEventListener("submit", updateWeatherDetails);
 
 let currentLocationBtn = document.querySelector("#current-location-btn");
+
+currentLocationBtn.addEventListener("click", setCurrentLocation);
+setCurrentLocation();
 
 function setCurrentLocation() {
   navigator.geolocation.getCurrentPosition(
@@ -112,24 +155,3 @@ function setCurrentLocation() {
     }
   );
 }
-
-currentLocationBtn.addEventListener("click", setCurrentLocation);
-setCurrentLocation();
-
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast-element");
-  let forecastHtml = "";
-  let forecastDays = ["Wed", "Thu", "Fri", "Sat"];
-
-  forecastDays.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `<div class="day" class="col">
-      <div class="row row1">${day}</div>
-      <div class="row row2">☁️</div>
-      <div class="row row3">18&deg; | 21&deg;</div></div>`;
-
-    forecastElement.innerHTML = forecastHtml;
-  });
-}
-displayForecast();
