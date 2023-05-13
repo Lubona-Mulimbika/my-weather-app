@@ -36,6 +36,12 @@ const time = `${hours}:${minutes}`;
 
 currentDateDisplayed.innerHTML = `${daysOfWeek[dayNow]}, ${monthsOfYear[monthNow]} ${day} <br> ${time}`;
 
+function getDailyForecast(coordinates) {
+  let apiKey = "cb4f81d02c3cd5910432ff00a734c2da";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -44,17 +50,11 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function getDailyForecast(coordinates) {
-  let apiKey = "cb4f81d02c3cd5910432ff00a734c2da";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
-}
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   const forecastElement = document.querySelector("#forecast-element");
   let forecastHTML = "";
-  forecast.slice(1, 7).forEach(function (forecastDay) {
+  forecast.slice(1, 6).forEach(function (forecastDay) {
     let day = formatDay(forecastDay.dt);
     forecastHTML += `<div class="day" class="col">
         <div class="row row1">${day}</div>
@@ -64,7 +64,7 @@ function displayForecast(response) {
           }@2x.png" alt="" width="10" />
         </div>
         <div class="row row3">
-           ${Math.round(forecastDay.temp.max)}° | ${Math.round(
+         H${Math.round(forecastDay.temp.max)}°|L${Math.round(
       forecastDay.temp.min
     )}° 
         </div>

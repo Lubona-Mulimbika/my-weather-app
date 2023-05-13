@@ -2,7 +2,6 @@ body {
   font-size: x-large;
   color: #19345a;
   font-weight: 700;
-  font-family: "Caveat", cursive;
 }
 form {
   justify-content: center;
@@ -56,6 +55,8 @@ p {
 }
 .weatherDetail {
   font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 #icon-today {
@@ -77,9 +78,6 @@ p {
   justify-content: center;
   align-items: center;
 }
-.daytimeWeather {
-  margin-top: 40px;
-}
 
 .row1,
 .row2,
@@ -98,20 +96,16 @@ p {
 }
 
 .day {
-  flex: 1;
+  flex: 10px;
 }
 .extraInfo {
-  align-items: start;
-  font-size: 12px;
-
-  top: 5px;
-  right: 5px;
-  margin: 0px 30px 30px 30px;
+  font-size: 20px;
+  align-content: start;
+  padding: 5px 50px 5px 5px;
   border: 1px #f368bc dotted;
   border-radius: 10px;
   box-shadow: 5px 8px 10px #80808033;
-  margin-bottom: 20px;
-  padding: 0px 10px 10px 10px;
+  margin-left: 30px;
 }
 .signature,
 .git-link {
