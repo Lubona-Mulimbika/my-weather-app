@@ -48,6 +48,7 @@ function formatDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[day];
+  //return daysOfWeek[day];
 }
 
 function displayForecast(response) {
